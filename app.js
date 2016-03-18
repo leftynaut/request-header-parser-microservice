@@ -2,8 +2,7 @@
 
 var express = require('express');
 
-//var ip = require('ip'); // module for getting ip address
-var p = require('ua-parser');
+var uaparser = require('ua-parser'); // module for user-agent parser
 var accepts = require('accepts'); // module for language header
 
 var app = express();
@@ -11,19 +10,17 @@ var app = express();
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/templates');
 
-//ip = ip.address(); // sets ip address to ip var
-
 app.get('/api', function(req, res) {
-    var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
-    var userAgent = req.headers['user-agent'];
-    userAgent = p.parseOS(userAgent).toString();
-    var lang = accepts(req).languages()[0]; // sets language to lang var
-    res.json({ ipaddress: ip, language: lang, software: userAgent });
+    var ip = req.header('x-forwarded-for') || req.connection.remoteAddress; // sets ip to var ip
+    var os = req.headers['user-agent']; // requests user-agent headers
+    os = p.parseOS(userAgent).toString(); // sets os string to var os
+    var lang = accepts(req).languages()[0]; // sets language to var lang
+    res.json({ ipAddress: ip, language: lang, software: os });
 });
 
 app.get('/*', function(req, res) { // wildcard catch-all
-    //var path = req.path;
-    //res.locals.path = path;
+    //var path = req.path;    --  not needed
+    //res.locals.path = path; --  not needed
     res.render('index');
 });
 
