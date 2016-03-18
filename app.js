@@ -1,7 +1,8 @@
 'use strict';
 
 var express = require('express');
-var os = require('os');
+//var os = require('os');
+var accepts = require('accepts'); // module for language header
 
 var app = express();
 
@@ -21,13 +22,14 @@ app.use(function(req, res, next) {
     next();
 });
 
-var ip = os.networkInterfaces().lo0[1].address;
+//var ip = os.networkInterfaces().lo0[1].address;
 
 app.get('/', function(req, res) {
     var path = req.path;
     res.locals.path = path;
+    var lang = accepts(req).languages()[0];
     //res.render('index');
-    res.json({ ipaddress: ip_info, software: ip });
+    res.json({ ipaddress: ip_info, language: lang, software: null });
 });
 
 app.listen(process.env.PORT, function() { // change to process.env.PORT when on Heroku
