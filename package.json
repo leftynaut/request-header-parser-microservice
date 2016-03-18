@@ -8,7 +8,7 @@
     "express": "^4.13.4",
     "ip": "^1.1.2",
     "jade": "^1.11.0",
-    "os-name": "^1.0.3"
+    "ua-parser": "^0.3.5"
   },
   "devDependencies": {},
   "scripts": {
