@@ -2,8 +2,7 @@
 
 var express = require('express');
 
-var ip = require('ip'); // module for getting ip address
-var http = require('http');
+//var ip = require('ip'); // module for getting ip address
 var p = require('ua-parser');
 var accepts = require('accepts'); // module for language header
 
@@ -12,9 +11,10 @@ var app = express();
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/templates');
 
-ip = ip.address(); // sets ip address to ip var
+//ip = ip.address(); // sets ip address to ip var
 
 app.get('/api', function(req, res) {
+    var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
     var userAgent = req.headers['user-agent'];
     userAgent = p.parseOS(userAgent).toString();
     var lang = accepts(req).languages()[0]; // sets language to lang var
