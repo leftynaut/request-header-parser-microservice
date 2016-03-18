@@ -13,7 +13,7 @@ app.set('views', __dirname + '/templates');
 app.get('/api', function(req, res) {
     var ip = req.header('x-forwarded-for') || req.connection.remoteAddress; // sets ip to var ip
     var os = req.headers['user-agent']; // requests user-agent headers
-    os = p.parseOS(userAgent).toString(); // sets os string to var os
+    os = uaparser.parseOS(os).toString(); // sets os string to var os
     var lang = accepts(req).languages()[0]; // sets language to var lang
     res.json({ ipAddress: ip, language: lang, software: os });
 });
