@@ -24,6 +24,7 @@ app.get('/*', function(req, res) { // wildcard catch-all
     res.render('index');
 });
 
-app.listen(process.env.PORT, function() { // change to process.env.PORT when on Heroku
-    console.log("request-header-parser-microservice running");
+var port = process.env.PORT || 3000;
+var server = app.listen(port, function() {
+   console.log('Sever listening on port ' + port);
 });
