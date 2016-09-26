@@ -7,8 +7,9 @@ var accepts = require('accepts'); // module for language header
 
 var app = express();
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-app.set('views', __dirname + '/templates');
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.get('/api', function(req, res) {
