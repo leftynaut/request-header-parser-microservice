@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express');
-
+var favicon = require('serve-favicon');
 var uaparser = require('ua-parser'); // module for user-agent parser
 var accepts = require('accepts'); // module for language header
 
@@ -10,6 +10,7 @@ var app = express();
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/templates');
 
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.get('/api', function(req, res) {
     var ip = req.header('x-forwarded-for') || req.connection.remoteAddress; // sets ip to var ip
     var os = req.headers['user-agent']; // requests user-agent headers
