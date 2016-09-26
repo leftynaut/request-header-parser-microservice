@@ -1,6 +1,7 @@
 'use strict';
 
 var express = require('express');
+var path = require('path');
 var favicon = require('serve-favicon');
 var uaparser = require('ua-parser'); // module for user-agent parser
 var accepts = require('accepts'); // module for language header
