@@ -9,7 +9,7 @@
     "path": "^0.12.7",
     "pug": "^2.0.0-alpha6",
     "serve-favicon": "^2.3.0",
-    "ua-parser": "^0.3.5"
+    "ua-parser": "^0.3.5",
   },
   "devDependencies": {},
   "scripts": {
