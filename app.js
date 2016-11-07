@@ -1,5 +1,3 @@
-'use strict';
-
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -14,21 +12,21 @@ app.set('views', __dirname + '/views');
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.get('/', (req, res) => {
-    let local = req.get('host');
+    const host = req.get('host');
     res.render('index', {
-        host: local
+        host
     });
 });
 
 app.get('/*', (req, res) => { // wildcard catch-all
-    let ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
-    let os = req.headers['user-agent']; // requests user-agent headers
-    os = uaparser.parseOS(os).toString(); // sets os string to var os
-    let lang = accepts(req).languages()[0]; // sets language to var lang
+    const ipAddress = req.header('x-forwarded-for') || req.connection.remoteAddress;
+    let software = req.headers['user-agent']; // requests user-agent headers
+    software = uaparser.parseOS(os).toString(); // sets software string to var software
+    const language = accepts(req).languages()[0]; // sets language to var language
     res.json({
-        ipAddress: ip,
-        language: lang,
-        software: os
+        ipAddress,
+        language,
+        software
     });
 });
 
