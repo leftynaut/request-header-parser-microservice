@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 app.get('/*', (req, res) => { // wildcard catch-all
     const ipAddress = req.header('x-forwarded-for') || req.connection.remoteAddress;
     let software = req.headers['user-agent']; // requests user-agent headers
-    software = uaparser.parseOS(os).toString(); // sets software string to var software
+    software = uaparser.parseOS(software).toString(); // sets software string to var software
     const language = accepts(req).languages()[0]; // sets language to var language
     res.json({
         ipAddress,
