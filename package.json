@@ -2,7 +2,7 @@
   "name": "request-header-parser-microservice",
   "version": "1.0.2",
   "engines": {
-    "node": "6.6.0"
+    "node": "6.11.1"
   },
   "description": "Free Code Camp - API Projects - Request Header Parser Microservice",
   "main": "app.js",
